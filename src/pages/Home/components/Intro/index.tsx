@@ -1,30 +1,19 @@
-import {
-  Icon,
-  IntroBanner,
-  IntroContainer,
-  IntroContent,
-  IntroItens,
-  Item,
-} from "./styles";
+import { Icon, IntroBanner, IntroContainer, IntroContent, IntroItens, Item } from "./styles";
 
 import CoffeeImage from "../../../../assets/coffee-img.svg";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
-import { useTheme } from "styled-components";
 
 export function Intro() {
-  const theme = useTheme();
   return (
     <>
-      {/* <IntroBanner /> */}
+      <IntroBanner />
       <IntroContainer>
         <IntroContent>
           <header>
             <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-            <p>
-              Com o Coffee Delivery você recebe seu café onde estiver, a
-              qualquer hora
-            </p>
+            <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
           </header>
+
           <IntroItens>
             <Item>
               <Icon variant="yellow-dark">

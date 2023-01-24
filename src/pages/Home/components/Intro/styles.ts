@@ -14,6 +14,7 @@ export const IntroBanner = styled.div`
 `;
 
 export const IntroContainer = styled.section`
+  padding: 5.75rem 0;
   width: 100%;
   gap: 56px;
   margin-top: 5.875rem;
