@@ -89,7 +89,7 @@ export const Actions = styled.div`
   padding: 0px;
   gap: 8px;
 `;
-export const Counter = styled.div`
+export const AddCartWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;

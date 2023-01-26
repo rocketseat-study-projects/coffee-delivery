@@ -1,9 +1,9 @@
-import { Actions, Buy, CoffeeCardContainer, Counter, Tags } from "./styles";
-import ExpressTrad from "../../../../assets/express-trad.svg";
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { useState } from "react";
+import { Actions, AddCartWrapper, Buy, CoffeeCardContainer, Tags } from "./styles";
+import { ShoppingCart } from "phosphor-react";
+import { useEffect, useState } from "react";
+import { QuantityInput } from "../../../../components/QuantityInput";
 
-export interface CardCoffeelProps {
+export interface Coffee {
   id: string;
   title: string;
   description: string;
@@ -15,53 +15,78 @@ export interface CardCoffeelProps {
   image: string;
 }
 
-export function CoffeeCard({
-  id,
-  title,
-  description,
-  category,
-  secondeCategory,
-  thirdCategory,
-  value,
-  image,
-}: CardCoffeelProps) {
-  const [quantity, setQuantity] = useState(1);
+interface CoffeeProps {
+  coffee: Coffee[];
+}
 
-  function handleIncrease() {
-    setQuantity((state) => state + 1);
+export function CoffeeCard({ coffee }: CoffeeProps) {
+  const [coffees, setCoffees] = useState<Coffee[]>([]);
+
+  //puxa dados do JSONServer
+  async function loadCoffees() {
+    const response = await fetch("http://localhost:3333/Coffees");
+    const data = await response.json();
+    setCoffees(data);
   }
+  useEffect(() => {
+    loadCoffees();
+  }, []);
 
-  function handleDecrease() {
-    setQuantity((state) => state - 1);
+  //função que aumenta a quantidade
+  function handleIncrease(id: string) {
+    console.log(id);
+    coffees.map((item) => {
+      if (item.id === id) {
+        item.quantity = item.quantity + 1;
+      }
+      return coffee;
+    });
+
+    setCoffees([...coffees]);
+  }
+  //função que diminui a quantidade
+  function handleDecrease(id: string) {
+    console.log(id);
+    coffees.map((item) => {
+      if (item.id === id) {
+        item.quantity = item.quantity - 1;
+      }
+      return coffee;
+    });
+    setCoffees([...coffees]);
   }
   return (
-    <CoffeeCardContainer>
-      <img src={ExpressTrad} alt="" />
-      <Tags>
-        <span>tradicional</span>
-        <span>gelado</span>
-      </Tags>
-
-      <h3>Expresso Tradicional</h3>
-      <p>O tradicional café feito com água quente e grãos moídos</p>
-      <Buy>
-        <p>R$ 9,90</p>
-        <Actions>
-          <Counter>
-            <button onClick={handleDecrease}>
-              <Minus size={14} />
-            </button>
-            <span>{quantity}</span>
-            <button onClick={handleIncrease}>
-              <Plus size={14} />
-            </button>
-          </Counter>
-
-          <button>
-            <ShoppingCart weight="fill" />
-          </button>
-        </Actions>
-      </Buy>
-    </CoffeeCardContainer>
+    <>
+      {coffees.map((coffee) => {
+        return (
+          <CoffeeCardContainer>
+            <img src={`/coffee/${coffee.image}`} alt="" />
+            <Tags>
+              <span>{coffee.category}</span>
+              {coffee.secondeCategory && <span>{coffee.secondeCategory}</span>}
+              {coffee.thirdCategory && <span>{coffee.thirdCategory}</span>}
+            </Tags>
+            <h3>{coffee.title}</h3>
+            <p>{coffee.description}</p>
+            <Buy>
+              <p>{coffee.value}</p>
+              <Actions>
+                <AddCartWrapper>
+                  <QuantityInput
+                    id={coffee.id}
+                    onIncrease={handleIncrease}
+                    onDecrease={handleDecrease}
+                    quantity={coffee.quantity}
+                  />
+                </AddCartWrapper>
+                <button>
+                  <ShoppingCart weight="fill" />
+                </button>
+              </Actions>
+            </Buy>
+          </CoffeeCardContainer>
+        );
+      })}
+    </>
   );
 }
