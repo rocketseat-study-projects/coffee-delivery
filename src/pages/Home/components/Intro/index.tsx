@@ -26,21 +26,21 @@ export function Intro() {
               <Icon variant="gray">
                 <Package size={16} weight="fill" />
               </Icon>
-              <p>Compra simples e segura</p>
+              <p>Embalagem mantém o café intacto</p>
             </Item>
 
             <Item>
               <Icon variant="yellow">
                 <Timer size={16} weight="fill" />
               </Icon>
-              <p>Compra simples e segura</p>
+              <p>Entrega rápida e rastreada</p>
             </Item>
 
             <Item>
               <Icon variant="purple">
                 <Coffee size={16} weight="fill" />
               </Icon>
-              <p>Compra simples e segura</p>
+              <p>O café chega fresquinho até você</p>
             </Item>
           </IntroItens>
         </IntroContent>

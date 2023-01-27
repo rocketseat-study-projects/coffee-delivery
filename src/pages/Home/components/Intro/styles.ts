@@ -8,7 +8,7 @@ export const IntroBanner = styled.div`
   width: 100%;
   left: 0;
 
-  filter: blur(50px);
+  filter: blur(40px);
   background-image: url(${backgroundIntro});
   background-size: cover;
   z-index: -1;
@@ -17,7 +17,7 @@ export const IntroBanner = styled.div`
 export const IntroContainer = styled.section`
   padding: 0 0 5.75rem 0;
   width: 100%;
-  gap: 56px;
+  gap: 3.5rem;
   margin-top: 5.875rem;
   display: flex;
   align-items: center;
@@ -32,14 +32,16 @@ export const IntroContent = styled.div`
     font-family: "Baloo 2";
     font-style: normal;
     font-weight: 800;
-    font-size: 48px;
+    font-size: 3rem;
     line-height: 130%;
+    color: ${(props) => props.theme["gray-900"]};
   }
 
   p {
     padding-top: 1rem;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 130%;
+    color: ${(props) => props.theme["gray-800"]};
   }
 `;
 interface IntroItensProps {
@@ -61,6 +63,7 @@ export const Item = styled.div`
 
   p {
     color: gray;
+    font-size: 1rem;
   }
 `;
 
