@@ -1,4 +1,12 @@
-import { Icon, IntroBanner, IntroContainer, IntroContent, IntroItens, Item } from "./styles";
+import {
+  Icon,
+  ImageCoffeeBanner,
+  IntroBanner,
+  IntroContainer,
+  IntroContent,
+  IntroItens,
+  Item,
+} from "./styles";
 
 import CoffeeImage from "../../../../assets/coffee-img.svg";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
@@ -45,9 +53,9 @@ export function Intro() {
           </IntroItens>
         </IntroContent>
 
-        <div>
+        <ImageCoffeeBanner>
           <img src={CoffeeImage} alt="Imagem Cafe do banner" />
-        </div>
+        </ImageCoffeeBanner>
       </IntroContainer>
     </>
   );

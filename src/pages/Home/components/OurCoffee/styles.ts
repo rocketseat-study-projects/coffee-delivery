@@ -10,4 +10,10 @@ export const CoffeeMenuContainer = styled.section`
   column-gap: 2rem;
   row-gap: 2.5rem;
   margin-top: 3.5rem;
+
+  @media screen and (max-width: 480px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 `;

@@ -12,6 +12,9 @@ export const IntroBanner = styled.div`
   background-image: url(${backgroundIntro});
   background-size: cover;
   z-index: -1;
+
+  @media screen and (max-width: 800px) {
+  }
 `;
 
 export const IntroContainer = styled.section`
@@ -53,6 +56,11 @@ export const IntroItens = styled.div`
   grid-template-columns: repeat(2, 1fr);
 
   padding-top: 2.875rem;
+
+  @media screen and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Item = styled.div`
@@ -77,6 +85,7 @@ export const Icon = styled.span<IntroItensProps>`
   align-items: center;
   padding: 8px;
   gap: 8px;
+
   ${(props) =>
     props.variant === "yellow" &&
     css`
@@ -97,4 +106,10 @@ export const Icon = styled.span<IntroItensProps>`
     css`
       background: ${(props) => props.theme["gray-700"]};
     `}
+`;
+
+export const ImageCoffeeBanner = styled.div`
+  @media screen and (max-width: 880px) {
+    display: none;
+  }
 `;
