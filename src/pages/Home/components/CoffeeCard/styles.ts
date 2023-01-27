@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const CoffeeCardContainer = styled.div`
-  /* width: 100%; */
-  margin-bottom: 100px;
+  width: 100%;
   width: 256px;
   background: ${(props) => props.theme["gray-100"]};
   display: flex;
@@ -19,6 +18,7 @@ export const CoffeeCardContainer = styled.div`
     height: 7.5rem;
     margin-top: -1.25rem;
   }
+
   h3 {
     font-family: "Baloo 2";
     font-style: normal;
@@ -88,6 +88,9 @@ export const Actions = styled.div`
   align-items: center;
   padding: 0px;
   gap: 8px;
+
+  button {
+  }
 `;
 export const AddCartWrapper = styled.div`
   display: flex;
@@ -104,5 +107,29 @@ export const AddCartWrapper = styled.div`
     border: 0;
     background: transparent;
     color: ${(props) => props.theme.purple};
+    cursor: pointer;
+
+    &:hover {
+      color: ${(props) => props.theme["purple-dark"]};
+      transition: color 0.2s;
+    }
+    &:disabled {
+      color: ${(props) => props.theme["gray-100"]};
+    }
+  }
+`;
+
+export const ButtonCart = styled.button`
+  border: none;
+  background: ${(props) => props.theme["purple-dark"]};
+  color: ${(props) => props.theme.white};
+  border-radius: 6px;
+  width: 2.5rem;
+  height: 2.3rem;
+  cursor: pointer;
+
+  &:hover {
+    background: ${(props) => props.theme.purple};
+    transition: background-color 0.2s;
   }
 `;

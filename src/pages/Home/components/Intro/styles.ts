@@ -11,10 +11,11 @@ export const IntroBanner = styled.div`
   filter: blur(50px);
   background-image: url(${backgroundIntro});
   background-size: cover;
+  z-index: -1;
 `;
 
 export const IntroContainer = styled.section`
-  padding: 5.75rem 0;
+  padding: 0 0 5.75rem 0;
   width: 100%;
   gap: 56px;
   margin-top: 5.875rem;

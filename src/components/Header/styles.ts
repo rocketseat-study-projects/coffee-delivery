@@ -30,7 +30,16 @@ export const Location = styled.a`
   border-radius: 6px;
 `;
 
-export const Cart = styled.a`
+export const Cart = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 4px;
+
+  width: 38px;
+  height: 38px;
   background: ${(props) => props.theme["yellow-light"]};
   color: ${(props) => props.theme["yellow-dark"]};
   border-radius: 6px;
@@ -38,6 +47,10 @@ export const Cart = styled.a`
   width: 2.5rem;
 
   position: relative;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 
   span {
     position: absolute;

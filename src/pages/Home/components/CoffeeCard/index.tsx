@@ -1,7 +1,8 @@
-import { Actions, AddCartWrapper, Buy, CoffeeCardContainer, Tags } from "./styles";
+import { Actions, AddCartWrapper, ButtonCart, Buy, CoffeeCardContainer, Tags } from "./styles";
 import { ShoppingCart } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { QuantityInput } from "../../../../components/QuantityInput";
+import { formatMoney } from "../../../../utils/formatMoney";
 
 export interface Coffee {
   id: string;
@@ -16,7 +17,7 @@ export interface Coffee {
 }
 
 interface CoffeeProps {
-  coffee: Coffee[];
+  coffee: Coffee;
 }
 
 export function CoffeeCard({ coffee }: CoffeeProps) {
@@ -46,7 +47,6 @@ export function CoffeeCard({ coffee }: CoffeeProps) {
   }
   //função que diminui a quantidade
   function handleDecrease(id: string) {
-    console.log(id);
     coffees.map((item) => {
       if (item.id === id) {
         item.quantity = item.quantity - 1;
@@ -55,11 +55,14 @@ export function CoffeeCard({ coffee }: CoffeeProps) {
     });
     setCoffees([...coffees]);
   }
+
+  // const formattedPrice = formatMoney(coffee.value);
+  // console.log(formattedPrice);
   return (
     <>
       {coffees.map((coffee) => {
         return (
-          <CoffeeCardContainer>
+          <CoffeeCardContainer key={coffee.id}>
             <img src={`/coffee/${coffee.image}`} alt="" />
             <Tags>
               <span>{coffee.category}</span>
@@ -79,9 +82,9 @@ export function CoffeeCard({ coffee }: CoffeeProps) {
                     quantity={coffee.quantity}
                   />
                 </AddCartWrapper>
-                <button>
-                  <ShoppingCart weight="fill" />
-                </button>
+                <ButtonCart>
+                  <ShoppingCart weight="fill" size={24} />
+                </ButtonCart>
               </Actions>
             </Buy>
           </CoffeeCardContainer>
