@@ -16,11 +16,7 @@ export interface Coffee {
   image: string;
 }
 
-interface CoffeeProps {
-  coffee: Coffee;
-}
-
-export function CoffeeCard({ coffee }: CoffeeProps) {
+export function CoffeeCard() {
   const [coffees, setCoffees] = useState<Coffee[]>([]);
 
   //puxa dados do JSONServer
@@ -40,7 +36,7 @@ export function CoffeeCard({ coffee }: CoffeeProps) {
       if (item.id === id) {
         item.quantity = item.quantity + 1;
       }
-      return coffee;
+      return coffees;
     });
 
     setCoffees([...coffees]);
@@ -51,7 +47,7 @@ export function CoffeeCard({ coffee }: CoffeeProps) {
       if (item.id === id) {
         item.quantity = item.quantity - 1;
       }
-      return coffee;
+      return coffees;
     });
     setCoffees([...coffees]);
   }

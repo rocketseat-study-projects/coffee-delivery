@@ -12,9 +12,6 @@ export const IntroBanner = styled.div`
   background-image: url(${backgroundIntro});
   background-size: cover;
   z-index: -1;
-
-  @media screen and (max-width: 800px) {
-  }
 `;
 
 export const IntroContainer = styled.section`

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CoffeeCardContainer = styled.div`
   width: 100%;
-  width: 256px;
+  width: 16rem;
   background: ${(props) => props.theme["gray-100"]};
   display: flex;
   flex-direction: column;
@@ -12,6 +12,10 @@ export const CoffeeCardContainer = styled.div`
   border-radius: 6px 36px 6px 36px;
   padding: 1.25rem;
   padding-top: 0;
+
+  @media screen and (max-width: 580px) {
+    width: 90%;
+  }
 
   img {
     width: 7.5rem;
