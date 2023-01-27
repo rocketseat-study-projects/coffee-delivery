@@ -1,28 +1,67 @@
-// import { createContext, ReactNode, useState } from "react";
-// import { CoffeeProps } from "../utils/Coffee";
-// import { coffeesUtils } from "../utils/Coffee";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
-// // interface CoffeeContexType {
-// //   id: string;
-// //   title: string;
-// //   description: string;
-// //   category: string;
-// //   secondeCategory?: string;
-// //   thirdCategory?: string;
-// //   quantity: number;
-// //   value: number;
-// //   image: string;
-// // }
+interface Coffee {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  secondeCategory?: string;
+  thirdCategory?: string;
+  quantity: number;
+  value: number;
+  image: string;
+}
 
-// interface CoffeeInformationsContext {
-//   coffees: CoffeeProps[];
-// }
-// interface CoffeeContextProviderProps {
-//   children: ReactNode;
-// }
-// export const CoffeeContext = createContext({} as CoffeeInformationsContext);
+export interface CoffeeContextType {
+  coffees: Coffee[];
 
-// export function CoffeeContextProvider({ children }: CoffeeContextProviderProps) {
-//   const [coffees, setCoffees] = useState(coffeesUtils);
-//   return <CoffeeContext.Provider value={{ coffees }}>{children}</CoffeeContext.Provider>;
-// }
+  handleIncrease: (id: string) => void;
+  handleDecrease: (id: string) => void;
+}
+
+export interface CoffeeContextProviderProps {
+  children: ReactNode;
+}
+export const CoffeeContext = createContext({} as CoffeeContextType);
+
+export function CoffeeContextProvider({ children }: CoffeeContextProviderProps) {
+  const [coffees, setCoffees] = useState<Coffee[]>([]);
+
+  //puxa dados do JSONServer
+  async function loadCoffees() {
+    const response = await fetch("http://localhost:3333/Coffees");
+    const data = await response.json();
+    setCoffees(data);
+  }
+  useEffect(() => {
+    loadCoffees();
+  }, []);
+
+  //função que aumenta a quantidade
+  function handleIncrease(id: string) {
+    console.log(id);
+    coffees.map((item) => {
+      if (item.id === id) {
+        item.quantity = item.quantity + 1;
+      }
+      return coffees;
+    });
+
+    setCoffees([...coffees]);
+  }
+  //função que diminui a quantidade
+  function handleDecrease(id: string) {
+    coffees.map((item) => {
+      if (item.id === id) {
+        item.quantity = item.quantity - 1;
+      }
+      return coffees;
+    });
+    setCoffees([...coffees]);
+  }
+  return (
+    <CoffeeContext.Provider value={{ coffees, handleDecrease, handleIncrease }}>
+      {children}
+    </CoffeeContext.Provider>
+  );
+}
