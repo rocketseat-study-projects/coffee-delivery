@@ -1,7 +1,9 @@
+import { Summary } from "./components/summary";
+
 export function CheckoutOrder() {
   return (
-    <form>
-      <button>enviar</button>
-    </form>
+    <div>
+      <Summary />
+    </div>
   );
 }
