@@ -1,30 +1,29 @@
-export function AdressForm() {
+import { AddressContent, FormAddress } from "./styles";
+
+export function AddressForm() {
   return (
-    <div>
-      <form action="">
-        <div>
-          <header>
-            <p>Endereço de entrega</p>
-            <p>informe o endereço de entrega</p>
-          </header>
+    <AddressContent>
+      <FormAddress action="">
+        <header>
+          <p>Endereço de entrega</p>
+          <p>informe o endereço de entrega</p>
+        </header>
+        <input type="text" name="" id="cep" placeholder="Cep" />
+        <input type="text" name="" id="" />
+        <input type="number" name="" id="" />
+        <input type="number" name="" id="" />
+        <input type="number" name="" id="" />
+        <input type="number" name="" id="" />
+      </FormAddress>
 
-          <input type="text" name="" id="" />
-          <input type="text" name="" id="" />
-          <input type="number" name="" id="" />
-          <input type="number" name="" id="" />
-          <input type="number" name="" id="" />
-          <input type="number" name="" id="" />
-        </div>
+      <div>
+        <p>Pagamento</p>
+        <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
 
-        <div>
-          <p>Pagamento</p>
-          <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
-
-          <button>Cartao de credito</button>
-          <button>Cartao de debito</button>
-          <button>Dinheiro</button>
-        </div>
-      </form>
-    </div>
+        <button>Cartao de credito</button>
+        <button>Cartao de debito</button>
+        <button>Dinheiro</button>
+      </div>
+    </AddressContent>
   );
 }
