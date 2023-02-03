@@ -1,4 +1,4 @@
-import { CurrencyDollar, CurrencyDollarSimple, MapPinLine } from "phosphor-react";
+import { CurrencyDollarSimple, MapPinLine } from "phosphor-react";
 import {
   AddressContent,
   ButtonOptions,

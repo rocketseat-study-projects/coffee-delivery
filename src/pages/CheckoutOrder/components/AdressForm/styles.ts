@@ -17,6 +17,7 @@ export const AddressContent = styled.section`
 
 export const FormAddress = styled.form`
   background: ${(props) => props.theme["gray-100"]};
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -59,6 +60,7 @@ export const InfoComplete = styled.div`
 
 export const PaymentMethod = styled.section`
   background: ${(props) => props.theme["gray-100"]};
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
