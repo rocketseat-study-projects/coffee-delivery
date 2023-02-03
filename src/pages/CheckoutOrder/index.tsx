@@ -6,6 +6,7 @@ export function CheckoutOrder() {
   return (
     <CheckoutOrderContainer>
       <AddressForm />
+
       <Summary />
     </CheckoutOrderContainer>
   );

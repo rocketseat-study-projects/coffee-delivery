@@ -1,6 +1,7 @@
 export function Summary() {
   return (
     <div>
+      <h2>Café selecionados</h2>
       <div>
         <ul>
           <li>aqui vi um cafe selecionado</li>
